@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/activity"
-                android:textSize="@dimen/abc_text_size_title_material_toolbar" />
+                android:textSize="@dimen/guillotine_item_text_size" />
         </android.support.v7.widget.Toolbar>
 
         <ImageView

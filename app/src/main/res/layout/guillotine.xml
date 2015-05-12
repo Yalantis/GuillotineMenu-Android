@@ -52,7 +52,7 @@
             android:src="@drawable/ic_activity_active" />
 
         <com.yalantis.guillotine.sample.widget.CanaroTextView
-            style="@style/TextView.GuillotineItem"
+            style="@style/TextView.GuillotineItem.Selected"
             android:text="@string/activity" />
     </LinearLayout>
 

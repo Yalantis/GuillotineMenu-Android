@@ -27,6 +27,10 @@
         <item name="android:textColor">@android:color/white</item>
     </style>
 
+    <style name="TextView.GuillotineItem.Selected">
+        <item name="android:textColor">@color/selected_item_color</item>
+    </style>
+
     <style name="Toolbar">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>
@@ -42,7 +46,7 @@
         <item name="android:layout_width">match_parent</item>
     </style>
 
-    <style name="ImageView.Hamburger" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+    <style name="ImageView.Hamburger" parent="Widget.AppCompat.ActionButton">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginBottom">@dimen/abc_action_bar_overflow_padding_start_material</item>

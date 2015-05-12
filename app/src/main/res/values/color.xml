@@ -2,4 +2,5 @@
 <resources>
     <color name="guillotine_backround">#444153</color>
     <color name="guillotine_backround_dark">#383547</color>
+    <color name="selected_item_color">#30d1d5</color>
 </resources>
