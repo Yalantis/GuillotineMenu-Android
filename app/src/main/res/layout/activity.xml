@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/guillotine_backround_dark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:contentInsetStart="0dp"
+            style="@style/Toolbar">
+
+            <ImageView
+                android:id="@+id/content_hamburger"
+                style="@style/ImageView.Hamburger"
+                android:src="@drawable/ic_menu_90" />
+
+            <com.yalantis.guillotine.sample.widget.CanaroTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/activity"
+                android:textSize="@dimen/abc_text_size_title_material_toolbar" />
+        </android.support.v7.widget.Toolbar>
+
+        <ImageView
+            style="@style/ImageView.ContentItem"
+            android:layout_marginTop="@dimen/guillotine_medium_margin"
+            android:src="@drawable/content_1" />
+
+        <ImageView
+            style="@style/ImageView.ContentItem"
+            android:src="@drawable/content_2" />
+
+
+    </LinearLayout>
+</FrameLayout>
