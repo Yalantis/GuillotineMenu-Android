@@ -1,4 +1,4 @@
-package com.yalantis.guillotine.sample.interfaces;
+package com.yalantis.guillotine.interfaces;
 
 /**
  * Created by Dmytro Denysenko on 5/6/15.

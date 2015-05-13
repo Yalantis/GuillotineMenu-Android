@@ -1,4 +1,4 @@
-package com.yalantis.guillotine.sample.util;
+package com.yalantis.guillotine.util;
 
 import android.animation.TimeInterpolator;
 

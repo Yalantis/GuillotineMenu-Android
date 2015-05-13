@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.yalantis.guillotine.R;
-import com.yalantis.guillotine.sample.animation.GuillotineAnimation;
+import com.yalantis.guillotine.animation.GuillotineAnimation;
+import com.yalantis.guillotine.sample.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

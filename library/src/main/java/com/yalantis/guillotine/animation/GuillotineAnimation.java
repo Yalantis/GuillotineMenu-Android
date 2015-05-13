@@ -1,4 +1,4 @@
-package com.yalantis.guillotine.sample.animation;
+package com.yalantis.guillotine.animation;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -8,8 +8,8 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import com.yalantis.guillotine.sample.interfaces.GuillotineListener;
-import com.yalantis.guillotine.sample.util.GuillotineInterpolator;
+import com.yalantis.guillotine.interfaces.GuillotineListener;
+import com.yalantis.guillotine.util.GuillotineInterpolator;
 
 /**
  * Created by Dmytro Denysenko on 5/6/15.
