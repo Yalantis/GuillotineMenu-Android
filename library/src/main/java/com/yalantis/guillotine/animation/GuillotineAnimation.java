@@ -27,12 +27,14 @@ public class GuillotineAnimation {
     private final GuillotineListener mListener;
     private final boolean mIsRightToLeftLayout;
     private final TimeInterpolator mInterpolator;
+    private final View mActionBarView;
 
     private boolean isOpening;
     private boolean isClosing;
     private long mDelay;
 
     private GuillotineAnimation(GuillotineBuilder builder) {
+        this.mActionBarView = builder.actionBarView;
         this.mListener = builder.guillotineListener;
         this.mGuillotineView = builder.guillotineView;
         this.mDuration = builder.duration > 0 ? builder.duration : DEFAULT_DURATION;
@@ -94,6 +96,7 @@ public class GuillotineAnimation {
 
     private ObjectAnimator buildOpeningAnimation() {
         ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, CLOSED_VALUE, OPENED_VALUE));
+        rotationAnimator.setInterpolator(mInterpolator);
         rotationAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -135,6 +138,7 @@ public class GuillotineAnimation {
             public void onAnimationEnd(Animator animation) {
                 isClosing = false;
                 mGuillotineView.setVisibility(View.GONE);
+                ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 15f).start();
                 if (mListener != null) {
                     mListener.onGuillotineClosed();
                 }
@@ -156,7 +160,6 @@ public class GuillotineAnimation {
     private ObjectAnimator initAnimator(ObjectAnimator animator) {
         animator.setDuration(mDuration);
         animator.setStartDelay(mDelay);
-        animator.setInterpolator(mInterpolator);
         return animator;
     }
 
@@ -172,16 +175,18 @@ public class GuillotineAnimation {
         private final View guillotineView;
         private final View openingView;
         private final View closingView;
+        private final View actionBarView;
         private GuillotineListener guillotineListener;
         private int duration;
         private long startDelay;
         private boolean isRightToLeftLayout;
         public TimeInterpolator interpolator;
 
-        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View openingView, @NonNull View closingView) {
+        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View openingView, @NonNull View closingView, View actionBarView) {
             this.guillotineView = guillotineView;
             this.openingView = openingView;
             this.closingView = closingView;
+            this.actionBarView = actionBarView;
         }
 
         public GuillotineBuilder setGuillotineListener(GuillotineListener guillotineListener) {

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
 
-        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger))
+        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger), toolbar)
                 .setStartDelay(RIPPLE_DURATION)
                 .build();
         root.addView(guillotineMenu);
