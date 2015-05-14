@@ -43,11 +43,26 @@ public class GuillotineAnimation {
         this.mInterpolator = builder.interpolator == null ? new GuillotineInterpolator() : builder.interpolator;
         setUpOpeningView(builder.openingView);
         setUpClosingView(builder.closingView);
-
+        setUpActionBar(builder.openingView);
         this.mOpeningAnimation = buildOpeningAnimation();
         this.mClosingAnimation = buildClosingAnimation();
         //TODO handle right-to-left layouts
         //TODO handle landscape orientation
+    }
+
+    private void setUpActionBar(final View openingView) {
+        mActionBarView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    mActionBarView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                } else {
+                    mActionBarView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                }
+                mActionBarView.setPivotX(calculatePivotX(openingView));
+                mActionBarView.setPivotY(calculatePivotY(openingView));
+            }
+        });
     }
 
     private void close() {
@@ -138,7 +153,8 @@ public class GuillotineAnimation {
             public void onAnimationEnd(Animator animation) {
                 isClosing = false;
                 mGuillotineView.setVisibility(View.GONE);
-                ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 15f).start();
+                startActionBarAnimation();
+
                 if (mListener != null) {
                     mListener.onGuillotineClosed();
                 }
@@ -155,6 +171,10 @@ public class GuillotineAnimation {
             }
         });
         return rotationAnimator;
+    }
+
+    private void startActionBarAnimation() {
+        ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 15f).start();
     }
 
     private ObjectAnimator initAnimator(ObjectAnimator animator) {
