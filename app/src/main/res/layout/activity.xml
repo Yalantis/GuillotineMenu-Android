@@ -4,8 +4,14 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/guillotine_backround_dark"
+    android:background="@color/guillotine_background_dark"
     android:orientation="vertical">
+    <View
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/guillotine_background"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

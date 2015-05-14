@@ -33,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity);
         ButterKnife.inject(this);
 
+
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(null);
         }
-
         View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
+        root.addView(guillotineMenu);
 
         new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger), toolbar)
                 .setStartDelay(RIPPLE_DURATION)
                 .build();
-        root.addView(guillotineMenu);
 
 
     }
