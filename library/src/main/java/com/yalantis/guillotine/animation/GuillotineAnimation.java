@@ -7,8 +7,10 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.BounceInterpolator;
 
 import com.yalantis.guillotine.interfaces.GuillotineListener;
+import com.yalantis.guillotine.util.ActionBarInterpolator;
 import com.yalantis.guillotine.util.GuillotineInterpolator;
 
 /**
@@ -114,6 +116,7 @@ public class GuillotineAnimation {
     private ObjectAnimator buildOpeningAnimation() {
         ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, CLOSED_VALUE, OPENED_VALUE));
         rotationAnimator.setInterpolator(mInterpolator);
+        rotationAnimator.setDuration(mDuration);
         rotationAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -143,7 +146,8 @@ public class GuillotineAnimation {
     }
 
     private ObjectAnimator buildClosingAnimation() {
-        ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, OPENED_VALUE, CLOSED_VALUE));
+        ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, OPENED_VALUE, CLOSED_VALUE - 15f));
+        rotationAnimator.setDuration((long) (mDuration * 0.45f));
         rotationAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -176,11 +180,14 @@ public class GuillotineAnimation {
     }
 
     private void startActionBarAnimation() {
-        ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 15f).start();
+        ObjectAnimator actionBarAnimation = ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 0.15f);
+        actionBarAnimation.setStartDelay((long) (mDuration * 0.15f));
+        actionBarAnimation.setDuration((long) (mDuration * 0.40f));
+        actionBarAnimation.setInterpolator(new ActionBarInterpolator());
+        actionBarAnimation.start();
     }
 
     private ObjectAnimator initAnimator(ObjectAnimator animator) {
-        animator.setDuration(mDuration);
         animator.setStartDelay(mDelay);
         return animator;
     }

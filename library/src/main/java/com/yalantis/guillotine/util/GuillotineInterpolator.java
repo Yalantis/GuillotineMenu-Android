@@ -22,7 +22,7 @@ public class GuillotineInterpolator implements TimeInterpolator {
     }
 
     private float secondBounce(float t) {
-        return 5f * t * t - 7f * t + 3.4f;
+        return 5.0f * t * t - 7.0f * t + 3.4f;
     }
 
     private float thirdBounce(float t) {
