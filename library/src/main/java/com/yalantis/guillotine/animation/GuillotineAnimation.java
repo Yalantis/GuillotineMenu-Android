@@ -51,18 +51,20 @@ public class GuillotineAnimation {
     }
 
     private void setUpActionBar(final View openingView) {
-        mActionBarView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    mActionBarView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                } else {
-                    mActionBarView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        if (mActionBarView != null) {
+            mActionBarView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        mActionBarView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    } else {
+                        mActionBarView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+                    mActionBarView.setPivotX(calculatePivotX(openingView));
+                    mActionBarView.setPivotY(calculatePivotY(openingView));
                 }
-                mActionBarView.setPivotX(calculatePivotX(openingView));
-                mActionBarView.setPivotY(calculatePivotY(openingView));
-            }
-        });
+            });
+        }
     }
 
     private void close() {
@@ -195,18 +197,22 @@ public class GuillotineAnimation {
         private final View guillotineView;
         private final View openingView;
         private final View closingView;
-        private final View actionBarView;
+        private View actionBarView;
         private GuillotineListener guillotineListener;
         private int duration;
         private long startDelay;
         private boolean isRightToLeftLayout;
         public TimeInterpolator interpolator;
 
-        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View openingView, @NonNull View closingView, View actionBarView) {
+        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View openingView, @NonNull View closingView) {
             this.guillotineView = guillotineView;
             this.openingView = openingView;
             this.closingView = closingView;
-            this.actionBarView = actionBarView;
+        }
+
+        public GuillotineBuilder setActionBarViewForAnimation(View view) {
+            this.actionBarView = view;
+            return this;
         }
 
         public GuillotineBuilder setGuillotineListener(GuillotineListener guillotineListener) {
@@ -224,6 +230,9 @@ public class GuillotineAnimation {
             return this;
         }
 
+        /*
+         * Not implemented yet
+         */
         public GuillotineBuilder setRightToLeftLayout(boolean isRightToLeftLayout) {
             this.isRightToLeftLayout = isRightToLeftLayout;
             return this;

@@ -41,8 +41,9 @@ public class MainActivity extends AppCompatActivity {
         View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
         root.addView(guillotineMenu);
 
-        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger), toolbar)
+        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger))
                 .setStartDelay(RIPPLE_DURATION)
+                .setActionBarViewForAnimation(toolbar)
                 .build();
 
 
