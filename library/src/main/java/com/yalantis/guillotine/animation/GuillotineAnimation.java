@@ -6,8 +6,11 @@ import android.animation.TimeInterpolator;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.animation.BounceInterpolator;
+import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import com.yalantis.guillotine.interfaces.GuillotineListener;
 import com.yalantis.guillotine.util.ActionBarInterpolator;
@@ -34,6 +37,8 @@ public class GuillotineAnimation {
     private boolean isOpening;
     private boolean isClosing;
     private long mDelay;
+    private LinearLayout.LayoutParams increasedWidthParams;
+    private LinearLayout.LayoutParams normalParams;
 
     private GuillotineAnimation(GuillotineBuilder builder) {
         this.mActionBarView = builder.actionBarView;
@@ -53,6 +58,7 @@ public class GuillotineAnimation {
     }
 
     private void setUpActionBar(final View openingView) {
+
         if (mActionBarView != null) {
             mActionBarView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
@@ -62,6 +68,9 @@ public class GuillotineAnimation {
                     } else {
                         mActionBarView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                     }
+                    int delta = mActionBarView.getWidth() / 2; // Delta for increasing/decreasing actionbar width for animation
+                    normalParams = new LinearLayout.LayoutParams(mActionBarView.getWidth() - delta, mActionBarView.getHeight());
+                    increasedWidthParams = new LinearLayout.LayoutParams(mActionBarView.getWidth() + delta, mActionBarView.getHeight());
                     mActionBarView.setPivotX(calculatePivotX(openingView));
                     mActionBarView.setPivotY(calculatePivotY(openingView));
                 }
@@ -146,7 +155,7 @@ public class GuillotineAnimation {
     }
 
     private ObjectAnimator buildClosingAnimation() {
-        ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, OPENED_VALUE, CLOSED_VALUE - 15f));
+        ObjectAnimator rotationAnimator = initAnimator(ObjectAnimator.ofFloat(mGuillotineView, ROTATION, OPENED_VALUE, CLOSED_VALUE));
         rotationAnimator.setDuration((long) (mDuration * 0.45f));
         rotationAnimator.addListener(new Animator.AnimatorListener() {
             @Override
@@ -180,10 +189,32 @@ public class GuillotineAnimation {
     }
 
     private void startActionBarAnimation() {
-        ObjectAnimator actionBarAnimation = ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 0.15f);
+        ObjectAnimator actionBarAnimation = ObjectAnimator.ofFloat(mActionBarView, ROTATION, OPENED_VALUE, 10f);
+        mActionBarView.setLayoutParams(increasedWidthParams);
         actionBarAnimation.setStartDelay((long) (mDuration * 0.15f));
         actionBarAnimation.setDuration((long) (mDuration * 0.40f));
         actionBarAnimation.setInterpolator(new ActionBarInterpolator());
+        actionBarAnimation.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mActionBarView.setLayoutParams(normalParams);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
         actionBarAnimation.start();
     }
 

@@ -11,8 +11,7 @@ public class ActionBarInterpolator implements TimeInterpolator {
         if (t < 0.5) {
             return -16.0f * t * t + 8.0f * t;
         } else {
-            //TODO
-            return 0;
+            return -16.0f * t * t + 24.0f * t - 8;
         }
     }
 }
