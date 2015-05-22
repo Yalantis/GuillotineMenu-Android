@@ -232,7 +232,7 @@ public class GuillotineAnimation {
         private boolean isRightToLeftLayout;
         public TimeInterpolator interpolator;
 
-        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View openingView, @NonNull View closingView) {
+        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View closingView, @NonNull View openingView) {
             this.guillotineView = guillotineView;
             this.openingView = openingView;
             this.closingView = closingView;

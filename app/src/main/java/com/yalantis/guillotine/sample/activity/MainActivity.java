@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(null);
         }
+
         View guillotineMenu = LayoutInflater.from(this).inflate(R.layout.guillotine, null);
         root.addView(guillotineMenu);
 
-        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, contentHamburger, guillotineMenu.findViewById(R.id.guillotine_hamburger))
+        new GuillotineAnimation.GuillotineBuilder(guillotineMenu, guillotineMenu.findViewById(R.id.guillotine_hamburger), contentHamburger)
                 .setStartDelay(RIPPLE_DURATION)
                 .setActionBarViewForAnimation(toolbar)
                 .build();
-
-
     }
 }
