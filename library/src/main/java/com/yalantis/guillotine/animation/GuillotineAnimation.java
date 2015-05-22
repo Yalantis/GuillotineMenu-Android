@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.animation.TimeInterpolator;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
@@ -232,7 +231,7 @@ public class GuillotineAnimation {
         private boolean isRightToLeftLayout;
         public TimeInterpolator interpolator;
 
-        public GuillotineBuilder(@NonNull View guillotineView, @NonNull View closingView, @NonNull View openingView) {
+        public GuillotineBuilder(View guillotineView, View closingView, View openingView) {
             this.guillotineView = guillotineView;
             this.openingView = openingView;
             this.closingView = closingView;
