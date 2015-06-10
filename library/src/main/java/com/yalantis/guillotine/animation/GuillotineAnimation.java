@@ -44,7 +44,6 @@ public class GuillotineAnimation {
         this.mInterpolator = builder.interpolator == null ? new GuillotineInterpolator() : builder.interpolator;
         setUpOpeningView(builder.openingView);
         setUpClosingView(builder.closingView);
-        setUpActionBar(builder.openingView);
         this.mOpeningAnimation = buildOpeningAnimation();
         this.mClosingAnimation = buildClosingAnimation();
         //TODO handle right-to-left layouts
@@ -52,7 +51,22 @@ public class GuillotineAnimation {
     }
 
     private void setUpActionBar(final View openingView) {
+    }
 
+    private void open() {
+        if (!isOpening) {
+            mOpeningAnimation.start();
+        }
+    }
+
+    private void close() {
+        if (!isClosing) {
+            mClosingAnimation.start();
+        }
+
+    }
+
+    private void setUpOpeningView(final View openingView) {
         if (mActionBarView != null) {
             mActionBarView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
@@ -67,22 +81,6 @@ public class GuillotineAnimation {
                 }
             });
         }
-    }
-
-    private void close() {
-        if (!isClosing) {
-            mClosingAnimation.start();
-        }
-
-    }
-
-    private void open() {
-        if (!isOpening) {
-            mOpeningAnimation.start();
-        }
-    }
-
-    private void setUpOpeningView(final View openingView) {
         openingView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,8 +179,7 @@ public class GuillotineAnimation {
 
     private void startActionBarAnimation() {
         ObjectAnimator actionBarAnimation = ObjectAnimator.ofFloat(mActionBarView, ROTATION, GUILLOTINE_OPENED_ANGLE, ACTION_BAR_ROTATION_ANGLE);
-        actionBarAnimation.setStartDelay((long) (mDuration * GuillotineInterpolator.PAUSE_TIME));
-        actionBarAnimation.setDuration((long) (mDuration * (GuillotineInterpolator.FIRST_BOUNCE_TIME + GuillotineInterpolator.SECOND_BOUNCE_TIME)));
+        actionBarAnimation.setDuration((long) (mDuration * (GuillotineInterpolator.PAUSE_TIME + GuillotineInterpolator.FIRST_BOUNCE_TIME + GuillotineInterpolator.SECOND_BOUNCE_TIME)));
         actionBarAnimation.setInterpolator(new ActionBarInterpolator());
         actionBarAnimation.addListener(new Animator.AnimatorListener() {
             @Override
