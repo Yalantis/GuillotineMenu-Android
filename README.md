@@ -12,7 +12,7 @@ Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-
 
 # Usage
 
-*For a working implementation, Have a look at the app module*
+*For a working implementation, have a look at the app module*
 
 1. Include the library as local library project.
 
