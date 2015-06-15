@@ -18,7 +18,7 @@ public class GuillotineAnimation {
     private static final String ROTATION = "rotation";
     private static final float GUILLOTINE_CLOSED_ANGLE = -90f;
     private static final float GUILLOTINE_OPENED_ANGLE = 0f;
-    private static final int DEFAULT_DURATION = 700;
+    private static final int DEFAULT_DURATION = 500;
     private static final float ACTION_BAR_ROTATION_ANGLE = 3f;
 
     private final View mGuillotineView;
@@ -180,28 +180,8 @@ public class GuillotineAnimation {
 
     private void startActionBarAnimation() {
         ObjectAnimator actionBarAnimation = ObjectAnimator.ofFloat(mActionBarView, ROTATION, GUILLOTINE_OPENED_ANGLE, ACTION_BAR_ROTATION_ANGLE);
-        actionBarAnimation.setDuration((long) (mDuration * (GuillotineInterpolator.PAUSE_TIME + GuillotineInterpolator.FIRST_BOUNCE_TIME + GuillotineInterpolator.SECOND_BOUNCE_TIME)));
+        actionBarAnimation.setDuration((long) (mDuration * (GuillotineInterpolator.FIRST_BOUNCE_TIME + GuillotineInterpolator.SECOND_BOUNCE_TIME)));
         actionBarAnimation.setInterpolator(new ActionBarInterpolator());
-        actionBarAnimation.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
         actionBarAnimation.start();
     }
 

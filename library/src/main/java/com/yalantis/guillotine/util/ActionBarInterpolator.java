@@ -7,14 +7,17 @@ import android.animation.TimeInterpolator;
  */
 public class ActionBarInterpolator implements TimeInterpolator {
 
+    private static final float FIRST_BOUNCE_PART = 0.375f;
+    private static final float SECOND_BOUNCE_PART = 0.625f;
+
     @Override
     public float getInterpolation(float t) {
-        if (t < 0.2727272) {
-            return 26.89f * t * t - 7.333f * t;
-        } else if (t < 0.63636363) {
-            return (-30.25f) * t * t + 27.5f * t - 5.25f;
+        if (t < FIRST_BOUNCE_PART) {
+            return (-1111f) * t * t + 1933f * t - 840f;
+        } else if (t < SECOND_BOUNCE_PART) {
+            return (833.3f) * t * t - 1533f * t + 705f;
         } else {
-            return (-24.20f) * t * t + 39.60f * t - 15.4f;
+            return (-370.4f) * t * t + 718.5f * t - 348.1f;
         }
     }
 }
