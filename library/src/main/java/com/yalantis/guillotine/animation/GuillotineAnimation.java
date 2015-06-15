@@ -22,17 +22,17 @@ public class GuillotineAnimation {
     private static final float ACTION_BAR_ROTATION_ANGLE = 3f;
 
     private final View mGuillotineView;
-    private final int mDuration;
+    private final long mDuration;
     private final ObjectAnimator mOpeningAnimation;
     private final ObjectAnimator mClosingAnimation;
     private final GuillotineListener mListener;
     private final boolean mIsRightToLeftLayout;
     private final TimeInterpolator mInterpolator;
     private final View mActionBarView;
+    private final long mDelay;
 
     private boolean isOpening;
     private boolean isClosing;
-    private long mDelay;
 
     private GuillotineAnimation(GuillotineBuilder builder) {
         this.mActionBarView = builder.actionBarView;
@@ -46,20 +46,21 @@ public class GuillotineAnimation {
         setUpClosingView(builder.closingView);
         this.mOpeningAnimation = buildOpeningAnimation();
         this.mClosingAnimation = buildClosingAnimation();
+        if (builder.isClosedOnStart) {
+            mGuillotineView.setRotation(GUILLOTINE_CLOSED_ANGLE);
+            mGuillotineView.setVisibility(View.GONE);
+        }
         //TODO handle right-to-left layouts
         //TODO handle landscape orientation
     }
 
-    private void setUpActionBar(final View openingView) {
-    }
-
-    private void open() {
+    public void open() {
         if (!isOpening) {
             mOpeningAnimation.start();
         }
     }
 
-    private void close() {
+    public void close() {
         if (!isClosing) {
             mClosingAnimation.start();
         }
@@ -223,10 +224,11 @@ public class GuillotineAnimation {
         private final View closingView;
         private View actionBarView;
         private GuillotineListener guillotineListener;
-        private int duration;
+        private long duration;
         private long startDelay;
         private boolean isRightToLeftLayout;
-        public TimeInterpolator interpolator;
+        private TimeInterpolator interpolator;
+        private boolean isClosedOnStart;
 
         public GuillotineBuilder(View guillotineView, View closingView, View openingView) {
             this.guillotineView = guillotineView;
@@ -244,7 +246,7 @@ public class GuillotineAnimation {
             return this;
         }
 
-        public GuillotineBuilder setDuration(int duration) {
+        public GuillotineBuilder setDuration(long duration) {
             this.duration = duration;
             return this;
         }
@@ -264,8 +266,13 @@ public class GuillotineAnimation {
             return this;
         }
 
-        public void build() {
-            new GuillotineAnimation(this);
+        public GuillotineBuilder setClosedOnStart(boolean isClosedOnStart) {
+            this.isClosedOnStart = isClosedOnStart;
+            return this;
+        }
+
+        public GuillotineAnimation build() {
+            return new GuillotineAnimation(this);
         }
     }
 }
