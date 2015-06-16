@@ -1,10 +1,6 @@
 # svn
 *.svn*
 
-# built application files
-*.apk
-*.ap_
-
 # files for the dex VM
 *.dex
 
