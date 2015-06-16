@@ -1,14 +1,13 @@
 # Guillotine animation
 
 Neat library, that provides a simple way to implement guillotine-styled animation
-//Made in Yalantis//
-[![Yalantis](https://raw.githubusercontent.com/Yalantis/Taurus/master/badge_grey.png)](http://yalantis.com/?utm_source=github)
+
+[![Yalantis](https://raw.githubusercontent.com/Yalantis/GuillotineMenu-Android/master/made-in-yalantis.png)](http://yalantis.com/?utm_source=github)
 
 Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-Menu)
 
 <img src="https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif" alt="Guillotine animation gif" style="width:800;height:600">
 
-//Sample apk//
 
 # Usage
 
