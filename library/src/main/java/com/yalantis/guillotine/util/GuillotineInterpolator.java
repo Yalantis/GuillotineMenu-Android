@@ -7,9 +7,9 @@ import android.animation.TimeInterpolator;
  */
 public class GuillotineInterpolator implements TimeInterpolator {
 
-    public static final float ROTATION_TIME = 0.84f;
-    public static final float FIRST_BOUNCE_TIME = 0.08f;
-    public static final float SECOND_BOUNCE_TIME = 0.08f;
+    public static final float ROTATION_TIME = 0.46667f;
+    public static final float FIRST_BOUNCE_TIME = 0.26666f;
+    public static final float SECOND_BOUNCE_TIME = 0.26667f;
 
 
     public GuillotineInterpolator() {
@@ -17,20 +17,19 @@ public class GuillotineInterpolator implements TimeInterpolator {
 
     public float getInterpolation(float t) {
         if (t < ROTATION_TIME) return rotation(t);
-        else if (t < ROTATION_TIME + FIRST_BOUNCE_TIME) return 1.0f;
-        else if (t < ROTATION_TIME + FIRST_BOUNCE_TIME + SECOND_BOUNCE_TIME) return firstBounce(t);
+        else if (t < ROTATION_TIME + FIRST_BOUNCE_TIME) return firstBounce(t);
         else return secondBounce(t);
     }
 
     private float rotation(float t) {
-        return 1.417f * t * t;
+        return 4.592f * t * t;
     }
 
     private float firstBounce(float t) {
-        return 625f * t * t - 1100f * t + 484f;
+        return 2.5f * t * t - 3f * t + 1.85556f;
     }
 
     private float secondBounce(float t) {
-        return 625f * t * t - 1200f * t + 576f;
+        return 0.625f * t * t - 1.08f * t + 1.458f;
     }
 }

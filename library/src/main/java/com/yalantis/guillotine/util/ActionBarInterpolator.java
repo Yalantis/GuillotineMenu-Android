@@ -13,11 +13,11 @@ public class ActionBarInterpolator implements TimeInterpolator {
     @Override
     public float getInterpolation(float t) {
         if (t < FIRST_BOUNCE_PART) {
-            return (-1111f) * t * t + 1933f * t - 840f;
+            return (-28.4444f) * t * t + 10.66667f * t;
         } else if (t < SECOND_BOUNCE_PART) {
-            return (833.3f) * t * t - 1533f * t + 705f;
+            return (21.33312f) * t * t - 21.33312f * t + 4.999950f;
         } else {
-            return (-370.4f) * t * t + 718.5f * t - 348.1f;
+            return (-9.481481f) * t * t + 15.40741f * t - 5.925926f;
         }
     }
 }
