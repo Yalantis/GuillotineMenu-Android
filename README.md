@@ -4,6 +4,8 @@ Neat library, that provides a simple way to implement guillotine-styled animatio
 
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/GuillotineMenu-Android/master/made-in-yalantis.png)](http://yalantis.com/?utm_source=github)
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GuillotineMenu-green.svg?style=flat)](https://android-arsenal.com/details/1/1995)
+
 Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-Menu)
 
 Also, read how it was done in [our blog] (http://yalantis.com/blog/how-we-developed-the-guillotine-menu-animation-for-android/?utm_source=github)
