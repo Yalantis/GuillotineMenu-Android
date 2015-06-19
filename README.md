@@ -10,7 +10,7 @@ Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-
 
 Also, read how it was done in [our blog] (http://yalantis.com/blog/how-we-developed-the-guillotine-menu-animation-for-android/?utm_source=github)
 
-<img src="https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2018249/draft_06.gif" alt="Guillotine animation gif" style="width:800;height:600">
+<img src="https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2113314/draft-03.gif" alt="Guillotine animation gif" style="width:800;height:600">
 
 
 # Usage
