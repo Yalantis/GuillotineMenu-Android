@@ -1,3 +1,5 @@
+[![Android Gems](http://www.android-gems.com/badge/Yalantis/GuillotineMenu-Android.svg?branch=master)](http://www.android-gems.com/lib/Yalantis/GuillotineMenu-Android)
+
 # Guillotine animation
 
 Neat library, that provides a simple way to implement guillotine-styled animation
