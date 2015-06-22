@@ -1,5 +1,3 @@
-[![Android Gems](http://www.android-gems.com/badge/Yalantis/GuillotineMenu-Android.svg?branch=master)](http://www.android-gems.com/lib/Yalantis/GuillotineMenu-Android)
-
 # Guillotine animation
 
 Neat library, that provides a simple way to implement guillotine-styled animation
@@ -7,6 +5,8 @@ Neat library, that provides a simple way to implement guillotine-styled animatio
 [![Yalantis](https://raw.githubusercontent.com/Yalantis/GuillotineMenu-Android/master/made-in-yalantis.png)](http://yalantis.com/?utm_source=github)
 
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-GuillotineMenu-green.svg?style=flat)](https://android-arsenal.com/details/1/1995)
+
+[![Android Gems](http://www.android-gems.com/badge/Yalantis/GuillotineMenu-Android.svg?branch=master)](http://www.android-gems.com/lib/Yalantis/GuillotineMenu-Android)
 
 Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-Menu)
 
