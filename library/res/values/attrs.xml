@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <declare-styleable name="guillotine_layout">
+    <attr name="android:layout_height"/>
     <attr name="guillotine_view_id" format="reference"/>
   </declare-styleable>
 </resources>

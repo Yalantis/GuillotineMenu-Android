@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:guillotine="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
   <com.yalantis.guillotine.view.GuillotineView
+      android:layout_gravity="center"
       android:id="@+id/guillotine_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       guillotine:guillotine_view_id="@+id/guillotine_toolbar">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/guillotine_toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/guillotine_background"/>
+        android:background="@color/guillotine_background">
+
+      <ImageView
+          android:id="@+id/menu_icon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          android:padding="16dp"
+          android:src="@drawable/ic_menu"/>
+
+      <TextView
+          android:id="@+id/content"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:textColor="@color/selected_item_color"
+          android:gravity="center_horizontal"
+          android:layout_alignParentBottom="true"
+          android:text="Guillotine"/>
+
+    </RelativeLayout>
 
   </com.yalantis.guillotine.view.GuillotineView>
 
-</LinearLayout>
+</FrameLayout>

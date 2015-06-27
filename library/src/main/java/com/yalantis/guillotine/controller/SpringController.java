@@ -10,8 +10,8 @@ import com.yalantis.guillotine.interfaces.GuillotineCallback;
 
 public class SpringController {
 
-  private static final int DEFAULT_TENSION = 100;
-  private static final int DEFAULT_FRICTION = 30;
+  private static final int DEFAULT_TENSION = 5;
+  private static final int DEFAULT_FRICTION = 3;
 
   private double tension = DEFAULT_TENSION;
   private double friction = DEFAULT_FRICTION;
@@ -54,6 +54,10 @@ public class SpringController {
     springRotate().setEndValue(0);
   }
 
+  public boolean isOpened() {
+    return springRotate().getCurrentValue() > 0;
+  }
+
   public double getTension() {
     return tension;
   }
@@ -75,7 +79,10 @@ public class SpringController {
       super.onSpringUpdate(spring);
       float rotateSpring = (float) SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0,
           1, 0, 90);
+      float alpha = (float) SpringUtil.mapValueFromRangeToRange(spring.getCurrentValue(), 0,
+          1, 1, 0);
       ViewCompat.setRotation(guillotineCallback.getGuillotineView(), rotateSpring);
+      ViewCompat.setAlpha(guillotineCallback.getContent(), alpha);
     }
   };
 

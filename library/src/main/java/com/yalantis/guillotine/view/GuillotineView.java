@@ -2,10 +2,10 @@ package com.yalantis.guillotine.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Debug;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.yalantis.guillotine.controller.SpringController;
 import com.yalantis.guillotine.interfaces.GuillotineCallback;
@@ -13,7 +13,10 @@ import com.yalantis.guillotine.library.R;
 
 public class GuillotineView extends FrameLayout {
 
+  private float height;
+
   private View guillotineToolbar;
+  private View content;
 
   private TypedArray attributes;
   private SpringController springController;
@@ -38,6 +41,27 @@ public class GuillotineView extends FrameLayout {
       mapGUI(attributes);
       attributes.recycle();
     }
+  }
+
+  @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+    //ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
+    //
+    //ViewCompat.setY(guillotineToolbar, -MeasureSpec.getSize(widthMeasureSpec) + height);
+    //
+    //layoutParams.width = MeasureSpec.getSize(heightMeasureSpec);
+    //layoutParams.height = MeasureSpec.getSize(widthMeasureSpec);
+    //guillotineToolbar.setLayoutParams(layoutParams);
+
+
+
+
+  }
+
+  @Override protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+    super.onLayout(changed, left, top, right, bottom);
+    ViewCompat.setPivotY(guillotineToolbar, height/2);
+    ViewCompat.setPivotX(guillotineToolbar, height / 2);
   }
 
   @Override protected void onAttachedToWindow() {
@@ -67,14 +91,10 @@ public class GuillotineView extends FrameLayout {
 
   private void mapGUI(TypedArray attributes) {
     if (getChildCount() == 1) {
-      int dragViewId = attributes.getResourceId(
-          R.styleable.guillotine_layout_guillotine_view_id, 0);
+      int dragViewId = attributes.getResourceId(R.styleable.guillotine_layout_guillotine_view_id, 0);
       guillotineToolbar = findViewById(dragViewId);
-      guillotineToolbar.post(new Runnable() {
-        @Override public void run() {
-          ViewCompat.setPivotX(guillotineToolbar, guillotineToolbar.getHeight()/2);
-        }
-      });
+      final ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
+      height = layoutParams.height;
     } else {
       throw new IllegalStateException("DraggerView must contains only two direct child");
     }
@@ -82,6 +102,14 @@ public class GuillotineView extends FrameLayout {
 
   private void initializeSpringController() {
     springController = new SpringController(guillotineCallback);
+  }
+
+  public View getContent() {
+    return content;
+  }
+
+  public void setContent(View content) {
+    this.content = content;
   }
 
   public void open() {
@@ -92,6 +120,10 @@ public class GuillotineView extends FrameLayout {
     springController.close();
   }
 
+  public boolean isOpened() {
+    return springController.isOpened();
+  }
+
   private GuillotineCallback guillotineCallback = new GuillotineCallback() {
 
     @Override public View getGuillotineView() {
@@ -100,6 +132,10 @@ public class GuillotineView extends FrameLayout {
 
     @Override public View getHomeIcon() {
       return null;
+    }
+
+    @Override public View getContent() {
+      return content;
     }
   };
 
