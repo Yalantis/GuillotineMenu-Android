@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:guillotine="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <com.yalantis.guillotine.view.GuillotineView
+      android:id="@+id/guillotine_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      guillotine:guillotine_view_id="@+id/guillotine_toolbar">
+
+    <FrameLayout
+        android:id="@+id/guillotine_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/guillotine_background"/>
+
+  </com.yalantis.guillotine.view.GuillotineView>
+
+</LinearLayout>
