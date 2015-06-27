@@ -45,23 +45,21 @@ public class GuillotineView extends FrameLayout {
 
   @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-    //ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
+    ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
     //
     //ViewCompat.setY(guillotineToolbar, -MeasureSpec.getSize(widthMeasureSpec) + height);
     //
-    //layoutParams.width = MeasureSpec.getSize(heightMeasureSpec);
+    layoutParams.width = MeasureSpec.getSize(heightMeasureSpec);
     //layoutParams.height = MeasureSpec.getSize(widthMeasureSpec);
-    //guillotineToolbar.setLayoutParams(layoutParams);
-
-
-
-
+    guillotineToolbar.setLayoutParams(layoutParams);
   }
 
   @Override protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
     super.onLayout(changed, left, top, right, bottom);
+    final ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
+    height = layoutParams.height;
     ViewCompat.setPivotY(guillotineToolbar, height/2);
-    ViewCompat.setPivotX(guillotineToolbar, height / 2);
+    //ViewCompat.setPivotX(guillotineToolbar, layoutParams.width/2);
   }
 
   @Override protected void onAttachedToWindow() {
@@ -80,10 +78,6 @@ public class GuillotineView extends FrameLayout {
 
   private void initializeAttributes(AttributeSet attrs) {
     TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.guillotine_layout);
-    //this.dragLimit = attributes.getFloat(R.styleable.dragger_layout_drag_limit,
-    //    DEFAULT_DRAG_LIMIT);
-    //this.dragPosition = DraggerPosition.getDragPosition(
-    //    attributes.getInt(R.styleable.dragger_layout_drag_position, DEFAULT_DRAG_POSITION));
     //this.tension = attributes.getInteger(R.styleable.dragger_layout_tension, DEFAULT_TENSION);
     //this.friction = attributes.getInteger(R.styleable.dragger_layout_friction, DEFAULT_FRICTION);
     this.attributes = attributes;
@@ -93,8 +87,6 @@ public class GuillotineView extends FrameLayout {
     if (getChildCount() == 1) {
       int dragViewId = attributes.getResourceId(R.styleable.guillotine_layout_guillotine_view_id, 0);
       guillotineToolbar = findViewById(dragViewId);
-      final ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
-      height = layoutParams.height;
     } else {
       throw new IllegalStateException("DraggerView must contains only two direct child");
     }
@@ -125,15 +117,12 @@ public class GuillotineView extends FrameLayout {
   }
 
   private GuillotineCallback guillotineCallback = new GuillotineCallback() {
-
     @Override public View getGuillotineView() {
       return guillotineToolbar;
     }
-
     @Override public View getHomeIcon() {
       return null;
     }
-
     @Override public View getContent() {
       return content;
     }
