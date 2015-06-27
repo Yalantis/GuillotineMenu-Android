@@ -1,27 +1,42 @@
 apply plugin: 'com.android.application'
 
-android {
-    compileSdkVersion 22
-    buildToolsVersion "21.1.2"
-
-    defaultConfig {
-        applicationId "com.yalantis.guillotine.sample"
-        minSdkVersion 15
-        targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+dependencies {
+  compile project(':library')
+  compile 'com.android.support:appcompat-v7:22.2.0'
 }
 
-dependencies {
-    compile project(':library')
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.1'
-    compile 'com.jakewharton:butterknife:6.1.0'
+android {
+
+  compileSdkVersion Integer.parseInt(project.ANDROID_COMPILE_SDK_VERSION)
+  buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+
+  defaultConfig {
+    applicationId "com.yalantis.guillotine.sample"
+    versionCode Integer.parseInt(project.VERSION_CODE)
+    versionName project.VERSION_NAME
+    minSdkVersion Integer.parseInt(project.ANDROID_MIN_SDK)
+    targetSdkVersion Integer.parseInt(project.ANDROID_TARGET_SDK_VERSION)
+  }
+
+  sourceSets {
+    main {
+      manifest.srcFile 'AndroidManifest.xml'
+      java.srcDirs = ['src/main/java']
+      res.srcDirs = ['res']
+    }
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+}
+
+task checkstyle(type: Checkstyle) {
+  configFile file('../config/checkstyle/checkstyle.xml')
+  source 'src/main/java'
+  include '**/*.java'
+  exclude '**/gen/**'
+  classpath = files()
 }
