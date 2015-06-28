@@ -28,12 +28,7 @@
                 style="@style/ImageView.Hamburger"
                 android:src="@drawable/ic_menu_90" />
 
-            <com.yalantis.guillotine.sample.widget.CanaroTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/activity"
-                android:textSize="@dimen/guillotine_item_text_size" />
+
         </android.support.v7.widget.Toolbar>
 
         <ImageView
