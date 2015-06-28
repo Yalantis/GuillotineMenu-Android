@@ -3,5 +3,7 @@
   <declare-styleable name="guillotine_layout">
     <attr name="android:layout_height"/>
     <attr name="guillotine_view_id" format="reference"/>
+    <attr name="guillotine_tension" format="reference|integer"/>
+    <attr name="guillotine_friction" format="reference|integer"/>
   </declare-styleable>
 </resources>

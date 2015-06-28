@@ -34,7 +34,6 @@ public class BaseActivity extends AbstractActivity {
       guillotineView.close();
     } else {
       guillotineView.open();
-      //super.onBackPressed();
     }
   }
 }

@@ -10,8 +10,8 @@ import com.yalantis.guillotine.interfaces.GuillotineCallback;
 
 public class SpringController {
 
-  private static final int DEFAULT_TENSION = 5;
-  private static final int DEFAULT_FRICTION = 3;
+  public static final int DEFAULT_TENSION = 5;
+  public static final int DEFAULT_FRICTION = 3;
 
   private double tension = DEFAULT_TENSION;
   private double friction = DEFAULT_FRICTION;

@@ -1,43 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:guillotine="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.yalantis.guillotine.view.GuillotineView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:guillotine="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/guillotine_view"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  guillotine:guillotine_view_id="@+id/guillotine_toolbar">
 
-  <com.yalantis.guillotine.view.GuillotineView
-      android:layout_gravity="center"
-      android:id="@+id/guillotine_view"
+  <RelativeLayout
+      android:id="@+id/guillotine_toolbar"
       android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      guillotine:guillotine_view_id="@+id/guillotine_toolbar">
+      android:layout_height="56dp"
+      android:background="@color/guillotine_background">
 
-    <RelativeLayout
-        android:id="@+id/guillotine_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/guillotine_background">
+    <ImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="16dp"
+        android:rotation="90"
+        android:src="@drawable/ic_menu"/>
 
-      <ImageView
-          android:id="@+id/menu_icon"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentBottom="true"
-          android:padding="16dp"
-          android:rotation="90"
-          android:src="@drawable/ic_menu"/>
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/selected_item_color"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:text="Guillotine"/>
 
-      <TextView
-          android:id="@+id/content"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textColor="@color/selected_item_color"
-          android:gravity="center_horizontal"
-          android:layout_alignParentBottom="true"
-          android:text="Guillotine"/>
+  </RelativeLayout>
 
-    </RelativeLayout>
-
-  </com.yalantis.guillotine.view.GuillotineView>
-
-</FrameLayout>
+</com.yalantis.guillotine.view.GuillotineView>

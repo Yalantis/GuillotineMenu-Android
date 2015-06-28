@@ -13,8 +13,6 @@ import com.yalantis.guillotine.library.R;
 
 public class GuillotineView extends FrameLayout {
 
-  private float height;
-
   private View guillotineToolbar;
   private View content;
 
@@ -31,13 +29,13 @@ public class GuillotineView extends FrameLayout {
 
   public GuillotineView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
+    initializeSpringController();
     initializeAttributes(attrs);
   }
 
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
     if(!isInEditMode()) {
-      initializeSpringController();
       mapGUI(attributes);
       attributes.recycle();
     }
@@ -46,20 +44,20 @@ public class GuillotineView extends FrameLayout {
   @Override protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
-    //
+    int position = layoutParams.height / 2;
+
+    ViewCompat.setPivotX(guillotineToolbar, position);
+    ViewCompat.setPivotY(guillotineToolbar, position);
+
+    guillotineToolbar.setPivotX(position);
+    guillotineToolbar.setPivotY(position);
+
+    //ViewCompat.setPivotX(guillotineToolbar, 100);
     //ViewCompat.setY(guillotineToolbar, -MeasureSpec.getSize(widthMeasureSpec) + height);
-    //
     layoutParams.width = MeasureSpec.getSize(heightMeasureSpec);
     //layoutParams.height = MeasureSpec.getSize(widthMeasureSpec);
     guillotineToolbar.setLayoutParams(layoutParams);
-  }
 
-  @Override protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-    super.onLayout(changed, left, top, right, bottom);
-    final ViewGroup.LayoutParams layoutParams = guillotineToolbar.getLayoutParams();
-    height = layoutParams.height;
-    ViewCompat.setPivotY(guillotineToolbar, height/2);
-    //ViewCompat.setPivotX(guillotineToolbar, layoutParams.width/2);
   }
 
   @Override protected void onAttachedToWindow() {
@@ -78,8 +76,10 @@ public class GuillotineView extends FrameLayout {
 
   private void initializeAttributes(AttributeSet attrs) {
     TypedArray attributes = getContext().obtainStyledAttributes(attrs, R.styleable.guillotine_layout);
-    //this.tension = attributes.getInteger(R.styleable.dragger_layout_tension, DEFAULT_TENSION);
-    //this.friction = attributes.getInteger(R.styleable.dragger_layout_friction, DEFAULT_FRICTION);
+    springController.setTension(attributes.getInteger(
+        R.styleable.guillotine_layout_guillotine_tension, SpringController.DEFAULT_TENSION));
+    springController.setFriction(attributes.getInteger(
+        R.styleable.guillotine_layout_guillotine_friction, SpringController.DEFAULT_TENSION));
     this.attributes = attributes;
   }
 
@@ -94,10 +94,6 @@ public class GuillotineView extends FrameLayout {
 
   private void initializeSpringController() {
     springController = new SpringController(guillotineCallback);
-  }
-
-  public View getContent() {
-    return content;
   }
 
   public void setContent(View content) {
