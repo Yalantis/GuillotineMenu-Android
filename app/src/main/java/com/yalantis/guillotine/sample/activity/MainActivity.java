@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private static final long RIPPLE_DURATION = 250;
 
 
-    @InjectView(R.id.toolbar)
-    Toolbar toolbar;
+    @InjectView(R.id.toolbar) Toolbar toolbar;
     @InjectView(R.id.root)
     FrameLayout root;
     @InjectView(R.id.content_hamburger)
