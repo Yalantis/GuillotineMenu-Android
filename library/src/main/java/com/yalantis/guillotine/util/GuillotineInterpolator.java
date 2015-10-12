@@ -30,6 +30,6 @@ public class GuillotineInterpolator implements TimeInterpolator {
     }
 
     private float secondBounce(float t) {
-        return 0.625f * t * t - 1.08f * t + 1.458f;
+        return 0.625f * t * t - 1.083f * t + 1.458f;
     }
 }
