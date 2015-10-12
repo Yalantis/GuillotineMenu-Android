@@ -48,7 +48,7 @@ public class GuillotineAnimation {
         this.mClosingAnimation = buildClosingAnimation();
         if (builder.isClosedOnStart) {
             mGuillotineView.setRotation(GUILLOTINE_CLOSED_ANGLE);
-            mGuillotineView.setVisibility(View.GONE);
+            mGuillotineView.setVisibility(View.INVISIBLE);
         }
         //TODO handle right-to-left layouts
         //TODO handle landscape orientation

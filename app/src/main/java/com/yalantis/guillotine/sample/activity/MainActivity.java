@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         new GuillotineAnimation.GuillotineBuilder(guillotineMenu, guillotineMenu.findViewById(R.id.guillotine_hamburger), contentHamburger)
                 .setStartDelay(RIPPLE_DURATION)
                 .setActionBarViewForAnimation(toolbar)
+                .setClosedOnStart(true)
                 .build();
     }
 }
