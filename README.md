@@ -28,6 +28,7 @@ Also, read how it was done in [our blog] (https://yalantis.com/blog/how-we-devel
 	```java
     new GuillotineAnimation.GuillotineBuilder(guillotineMenu, guillotineMenu.findViewById(R.id.guillotine_hamburger), contentHamburger)
                 .setActionBarViewForAnimation(toolbar)
+                .setClosedOnStart(true)
                 .build();
      ```
 Here `setActionBarViewForAnimation` method enables bounce effect of ActionBar at the end of the guillotine closing animation.
