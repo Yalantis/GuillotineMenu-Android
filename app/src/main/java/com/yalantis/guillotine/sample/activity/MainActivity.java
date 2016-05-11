@@ -11,7 +11,7 @@ import com.yalantis.guillotine.animation.GuillotineAnimation;
 import com.yalantis.guillotine.sample.R;
 
 import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterknife.BindView;
 
 /**
  * Created by Dmytro Denysenko on 5/4/15.
@@ -20,18 +20,18 @@ public class MainActivity extends AppCompatActivity {
     private static final long RIPPLE_DURATION = 250;
 
 
-    @InjectView(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @InjectView(R.id.root)
+    @BindView(R.id.root)
     FrameLayout root;
-    @InjectView(R.id.content_hamburger)
+    @BindView(R.id.content_hamburger)
     View contentHamburger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 
 
         if (toolbar != null) {
