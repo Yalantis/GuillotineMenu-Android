@@ -19,18 +19,36 @@ Also, read how it was done in [our blog] (https://yalantis.com/blog/how-we-devel
 
 *For a working implementation, have a look at the app module*
 
-1. Include the library as local library project.
+1. Add JitPack repository in your root build.gradle at the end of repositories:
 
-2. Your hamburger on navigation menu must have exactly same coordinates as hamburger on ActionBar.
+    ~~~
+    allprojects {
+        repositories {
+            ...
+            maven { url "https://jitpack.io" }
+        }
+    }
 
-3. In your `onCreate` method you need to config and build animation with GuillotineAnimation.GuillotineBuilder
+    ~~~
+
+2. Add the dependency to your app build.gradle
+
+    ~~~
+    dependencies {
+        compile 'com.github.Yalantis:GuillotineMenu-Android:1.2'
+    }
+    ~~~
+
+3. You need to create a layout for the navigation menu (`guillotine.xml` in sample app), which will later open and close guillotine-style. The only tricky part here is that the navigation layout should be on top of any other content and will disappear after closing animation ends. That is why content layout (`activity.xml` in sample app) should also have hamburger icon at the same coordinates as navigation menu has.
+
+4. After that all you need to do is to build animation by passing navigation layout object, navigation and content layout hamburger objects to `GuillotineAnimation.GuillotineBuilder` in your `onCreate` method
 
 	```java
     new GuillotineAnimation.GuillotineBuilder(guillotineMenu, guillotineMenu.findViewById(R.id.guillotine_hamburger), contentHamburger)
                 .setActionBarViewForAnimation(toolbar)
                 .build();
      ```
-Here `setActionBarViewForAnimation` method enables bounce effect of ActionBar at the end of the guillotine closing animation.
+Here `setActionBarViewForAnimation` method enables bounce effect of Toolbar at the end of the guillotine closing animation.
 
 # Misc
 
