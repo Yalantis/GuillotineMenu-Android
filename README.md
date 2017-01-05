@@ -64,6 +64,11 @@ Builder allows you to customize start delay, duration, interpolation and you can
 
   * Initial Build
   
+### Version: 1.2
+  
+  * Moved to using Toolbar instead of ActionBar
+  * Updated Gradle versions
+  * Fixed bugs
 
 #### Let us know!
 
