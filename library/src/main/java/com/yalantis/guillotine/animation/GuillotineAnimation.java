@@ -16,8 +16,8 @@ import com.yalantis.guillotine.util.GuillotineInterpolator;
  */
 public class GuillotineAnimation {
     private static final String ROTATION = "rotation";
-    private static final float GUILLOTINE_CLOSED_ANGLE = -90f;
-    private static final float GUILLOTINE_OPENED_ANGLE = 0f;
+    private static final float GUILLOTINE_CLOSED_ANGLE = 0f;
+    private static final float GUILLOTINE_OPENED_ANGLE = 90f;
     private static final int DEFAULT_DURATION = 625;
     private static final float ACTION_BAR_ROTATION_ANGLE = 3f;
 
