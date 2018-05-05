@@ -35,7 +35,7 @@ Also, read how it was done in [our blog] (https://yalantis.com/blog/how-we-devel
 
     ~~~
     dependencies {
-        compile 'com.github.Yalantis:GuillotineMenu-Android:1.2'
+        implementation 'com.github.Yalantis:GuillotineMenu-Android:1.2'
     }
     ~~~
 
