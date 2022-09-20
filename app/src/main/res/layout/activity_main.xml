@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             app:contentInsetStart="0dp"
             style="@style/Toolbar">
@@ -34,7 +34,7 @@
                 android:layout_gravity="center"
                 android:text="@string/activity"
                 android:textSize="@dimen/guillotine_item_text_size" />
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
         <ImageView
             style="@style/ImageView.ContentItem"
