@@ -10,8 +10,6 @@ Neat library, that provides a simple way to implement guillotine-styled animatio
 
 Check this [project on Dribbble] (https://dribbble.com/shots/2018249-Guillotine-Menu)
 
-Also, read how it was done in [our blog] (https://yalantis.com/blog/how-we-developed-the-guillotine-menu-animation-for-android/?utm_source=github)
-
 <img src="https://d13yacurqjgara.cloudfront.net/users/495792/screenshots/2113314/draft-03.gif" alt="Guillotine animation gif" style="width:800;height:600">
 
 
@@ -35,7 +33,7 @@ Also, read how it was done in [our blog] (https://yalantis.com/blog/how-we-devel
 
     ~~~
     dependencies {
-        compile 'com.github.Yalantis:GuillotineMenu-Android:1.2'
+        implementation 'com.github.Yalantis:GuillotineMenu-Android:1.3'
     }
     ~~~
 
@@ -60,15 +58,20 @@ Builder allows you to customize start delay, duration, interpolation and you can
   
 # Changelog
 
-### Version: 1.0
+### Version: 1.3
 
-  * Initial Build
-  
+  * Update dependencies
+  * Migrate to AndroidX
+
 ### Version: 1.2
-  
+
   * Moved to using Toolbar instead of ActionBar
   * Updated Gradle versions
   * Fixed bugs
+
+### Version: 1.0
+
+  * Initial Build
 
 #### Let us know!
 
